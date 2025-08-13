@@ -3,7 +3,7 @@ on: push
 env:
   docker_username: haim-hub
   docker_password: ${{ secrets.GITHUB_TOKEN }} 
-  git_commit: ${{secrets.GIT_COMMIT}}
+  GIT_COMMIT: ${{ github.sha }}
 jobs:
   Build:
     runs-on: ubuntu-latest
