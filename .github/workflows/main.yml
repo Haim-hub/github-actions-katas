@@ -52,22 +52,3 @@ jobs:
         run: bash ci/build-docker.sh
       - name: push docker
         run: bash ci/push-docker.sh
-  build-and-push-latest:
-    runs-on: ubuntu-latest
-    permissions:
-      packages: write
-    steps:
-      - name: Login to DockerHub
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: haim-hub
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          context: code
-          push: true
-          tags: ghcr.io/haim-hub/micronaut-app:1.0-${{ github.sha }},ghcr.io/haim-hub/micronaut-app:latest
-
-      
